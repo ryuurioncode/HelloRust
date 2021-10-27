@@ -1,6 +1,16 @@
 # HelloRust
-## Linux
+## Install dependencies
+Visit. Install "nightly"
 ```
-    scripts/build.sh
-    scripts/run.sh
+    https://rustup.rs/
+```
+
+## Build and run. Linux
+```
+    bash scripts/build.sh
+    bash scripts/run.sh
+```
+
+## Build and run. Windows
+```
 ```
