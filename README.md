@@ -1,8 +1,8 @@
 # HelloRust
 ## Install dependencies
-Visit. Install "nightly"
+Look for instruction
 ```
-    https://rustup.rs/
+    Windows_Instructions.pdf
 ```
 
 ## Build and run. Linux
