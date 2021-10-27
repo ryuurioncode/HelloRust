@@ -13,4 +13,6 @@ Visit. Install "nightly"
 
 ## Build and run. Windows
 ```
+    cargo build
+    cargo run
 ```
