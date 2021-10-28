@@ -5,13 +5,7 @@ Look for instruction
     Windows_Instructions.pdf
 ```
 
-## Build and run. Linux
-```
-    bash scripts/build.sh
-    bash scripts/run.sh
-```
-
-## Build and run. Windows
+## Build and run.
 ```
     cargo build
     cargo run
