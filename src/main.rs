@@ -1,23 +1,25 @@
 use std::thread;
 use std::time;
-
 use websocket::client::ClientBuilder;
 use websocket::{Message, OwnedMessage};
 
-
+// end point
 const CONNECTION: &'static str = "wss://stream.binance.com:9443/ws";
 const targets: [&str; 2] = ["btcusdt", "ethusdt"]; // more then 1 in stream couses sequence bug
 const update_time_ms: i32 = 1000; // 1000 ms or 100 ms
 const depth: i32 = 5; // Valid are 5, 10, or 20.
 const life_time_sec: u64 = 10;
 fn main() {
+    // create socket
     let mut client = ClientBuilder::new(CONNECTION)
         .unwrap()
-        // .connect_insecure()
+        // ssl connection
         .connect(None)
         .unwrap();
 	println!("Successfully connected");
-    {
+    // subscribe to targets
+    { 
+        // init subscription message and send it
         let mut message: String = r#"{"method": "SUBSCRIBE","params":["#.to_owned();
         for i in 0..targets.len() {
             message.push_str("\"");
@@ -34,6 +36,7 @@ fn main() {
         message.push_str(r#"],"id":1}"#);
         client.send_message(&OwnedMessage::Text(message.to_string()));
     }
+    // recieve answer for subscribes
     {
         let message = client.recv_message();
     }
@@ -54,6 +57,7 @@ fn main() {
                     client.send_message(&OwnedMessage::Close(None));
                     return;
                 }
+                // ping pong required by binance
                 OwnedMessage::Ping(data) => {
                     client.send_message(&OwnedMessage::Pong(data));
                 }
@@ -72,6 +76,7 @@ fn main() {
             }
         }
     });
+    // sleep fow life_time_sec seconds and end
     let tsleep = time::Duration::from_millis(life_time_sec * 1000);
     thread::sleep(tsleep);
 }
