@@ -10,3 +10,8 @@ Look for instruction
     cargo build
     cargo run
 ```
+
+## Code location
+```
+    src\main.rs
+```
