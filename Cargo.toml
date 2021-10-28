@@ -7,4 +7,6 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-binance = { git = "https://github.com/wisespace-io/binance-rs.git" }
+websocket = { git = "https://github.com/websockets-rs/rust-websocket.git" }
+json = { git = "https://github.com/maciejhirsz/json-rust.git" }
+chrono = { git = "https://github.com/chronotope/chrono.git" }
